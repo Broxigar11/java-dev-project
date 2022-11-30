@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<UserDto> signInPrivileged(String username, String password);
+    boolean signInPrivileged(String username, String password);
 
     Optional<UserDto> signOut();
 
