@@ -52,11 +52,15 @@ public class MovieCommand {
             return "There are no movies at the moment";
         }
         String response = "";
-        for (MovieDto movie : movieList) {
-            response += movie.getTitle() +
-                    " (" + movie.getGenre() +
-                    ", " + movie.getLength() +
-                    " minutes)\n";
+        for (int i = 0; i < movieList.size(); i++) {
+            MovieDto movie = movieList.get(i);
+            response += movie.getTitle()
+                    + " (" + movie.getGenre()
+                    + ", " + movie.getLength()
+                    + " minutes)";
+            if (i < movieList.size() - 1) {
+                response += "\n";
+            }
         }
 
         return response;
@@ -69,7 +73,5 @@ public class MovieCommand {
                 ? Availability.available()
                 : Availability.unavailable("You are not an admin!");
     }
-
-
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="movies")
+@Table(name = "movies")
 public class MovieEntity {
 
     public MovieEntity(String title, String genre, Integer length) {

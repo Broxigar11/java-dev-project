@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ScreeningRepository extends JpaRepository<ScreeningEntity, String> {
 
+    Optional<ScreeningEntity> findByMovieAndRoomAndScreeningTime(MovieEntity movie, RoomEntity room, Date date);
 
-
-    Optional<ScreeningEntity> findByMovieAndRoomAndDate(MovieEntity movie, RoomEntity room, Date date);
+    List<ScreeningEntity> findAllByRoom(RoomEntity room);
 
 }

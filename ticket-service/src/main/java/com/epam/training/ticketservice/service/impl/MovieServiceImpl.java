@@ -40,8 +40,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteMovie(String title) {
-        MovieEntity movie = movieRepository.findByTitle(title).
-                orElseThrow(() -> new IllegalArgumentException("There's no movie by this title!"));
+        MovieEntity movie = movieRepository.findByTitle(title)
+                .orElseThrow(() -> new IllegalArgumentException("There's no movie by this title!"));
 
         movieRepository.delete(movie);
     }

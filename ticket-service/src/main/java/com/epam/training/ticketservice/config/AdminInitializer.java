@@ -15,8 +15,10 @@ public class AdminInitializer {
 
     @PostConstruct
     public void init() {
+        userRepository.deleteAll();
         if (userRepository.findAll().isEmpty()) {
-            UserEntity admin = new UserEntity(null, "admin", UserEntity.Role.ADMIN);
+            UserEntity admin = new UserEntity("admin", "admin", UserEntity.Role.ADMIN);
+            userRepository.save(admin);
         }
     }
 }

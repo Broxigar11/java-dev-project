@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="rooms")
+@Table(name = "rooms")
 public class RoomEntity {
 
     public RoomEntity(String name, Integer rows, Integer columns) {

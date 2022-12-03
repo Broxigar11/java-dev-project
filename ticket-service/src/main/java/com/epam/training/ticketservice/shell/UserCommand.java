@@ -33,8 +33,8 @@ public class UserCommand {
     @ShellMethod(key = "describe account", value = "get information about the signed in account")
     public String describeAccount() {
         Optional<UserDto> user = userService.describe();
-        if (user.isEmpty()){
-           return "You are not signed in";
+        if (user.isEmpty()) {
+            return "You are not signed in";
         }
 
         UserDto userDto = user.get();

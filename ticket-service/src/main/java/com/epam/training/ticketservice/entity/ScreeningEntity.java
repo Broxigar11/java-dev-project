@@ -10,13 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="screenings")
+@Table(name = "screenings")
 public class ScreeningEntity {
 
     public ScreeningEntity(MovieEntity movie, RoomEntity room, Date screeningTime) {

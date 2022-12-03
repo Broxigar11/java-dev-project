@@ -31,9 +31,11 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDto> signOut() {
         final Optional<UserDto> previouslyLoggedInUser = describe();
         loggedInUser = null;
-        return previouslyLoggedInUser;    }
+        return previouslyLoggedInUser;
+    }
 
     @Override
     public Optional<UserDto> describe() {
-        return Optional.ofNullable(loggedInUser);    }
+        return Optional.ofNullable(loggedInUser);
+    }
 }

@@ -1,8 +1,6 @@
 package com.epam.training.ticketservice.service.impl;
 
-import com.epam.training.ticketservice.entity.MovieEntity;
 import com.epam.training.ticketservice.entity.RoomEntity;
-import com.epam.training.ticketservice.model.MovieDto;
 import com.epam.training.ticketservice.model.RoomDto;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.service.RoomService;
@@ -42,8 +40,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void deleteRoom(String name) {
-        RoomEntity room = roomRepository.findByName(name).
-                orElseThrow(() -> new IllegalArgumentException("There's no movie by this title!"));
+        RoomEntity room = roomRepository.findByName(name)
+                        .orElseThrow(() -> new IllegalArgumentException("There's no movie by this title!"));
 
         roomRepository.delete(room);
     }
