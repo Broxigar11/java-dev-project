@@ -25,9 +25,9 @@ public class UserCommand {
 
     @ShellMethod(key = "sign out", value = "sign out")
     public String signOut() {
-        userService.signOut();
-
-        return "Signed out";
+        return userService.signOut()
+            ? "Signed out"
+            : "You are not signed in";
     }
 
     @ShellMethod(key = "describe account", value = "get information about the signed in account")

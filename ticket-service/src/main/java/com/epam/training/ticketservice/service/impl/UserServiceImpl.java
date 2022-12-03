@@ -7,6 +7,7 @@ import com.epam.training.ticketservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -19,7 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean signInPrivileged(String username, String password) {
-        final Optional<UserEntity> user = userRepository.findByUsernameAndPassword(username, password);
+        final Optional<UserEntity> user = userRepository
+                .findByUsernameAndPasswordAndRole(username, password, UserEntity.Role.ADMIN);
         if (user.isEmpty()) {
             return false;
         }
@@ -28,10 +30,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDto> signOut() {
-        final Optional<UserDto> previouslyLoggedInUser = describe();
+    public boolean signOut() {
+        if (Objects.isNull(loggedInUser)) {
+            return false;
+        }
         loggedInUser = null;
-        return previouslyLoggedInUser;
+        return true;
     }
 
     @Override

@@ -8,7 +8,7 @@ public interface UserService {
 
     boolean signInPrivileged(String username, String password);
 
-    Optional<UserDto> signOut();
+    boolean signOut();
 
     Optional<UserDto> describe();
 

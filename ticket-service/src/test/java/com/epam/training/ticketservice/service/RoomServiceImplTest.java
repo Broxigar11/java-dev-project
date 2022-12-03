@@ -8,9 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class RoomServiceImplTest {
 
-    private final MovieEntity TEST_MOVIE_ENTITY = new MovieEntity("Lord of the Rings", "fantasy", 178);
-
-    private final MovieDto TEST_MOVIE_DTO = new MovieDto("Lord of the Rings", "fantasy", 178);
 
 
 }

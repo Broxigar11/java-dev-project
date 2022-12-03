@@ -2,6 +2,8 @@ package com.epam.training.ticketservice.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
@@ -29,9 +31,11 @@ public class ScreeningEntity {
     private Integer id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private MovieEntity movie;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private RoomEntity room;
 
     @DateTimeFormat(pattern = "YYYY-MM-DD hh:mm")
