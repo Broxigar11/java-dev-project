@@ -34,7 +34,7 @@ public class MovieCommand {
     @ShellMethodAvailability("isAdmin")
     public String updateMovie(String title, String genre, Integer length) {
         MovieDto movieDto = new MovieDto(title, genre, length);
-        movieService.updateMovie(title, movieDto);
+        movieService.updateMovie(movieDto);
         return "Movie " + title + " updated";
     }
 

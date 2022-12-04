@@ -23,12 +23,12 @@ public class MovieServiceImpl implements MovieService {
                     movieDto.getTitle(),
                     movieDto.getGenre(),
                     movieDto.getLength()
-                ));
+        ));
     }
 
     @Override
-    public void updateMovie(String title, MovieDto movieDto) {
-        MovieEntity movie = movieRepository.findByTitle(title)
+    public void updateMovie(MovieDto movieDto) {
+        MovieEntity movie = movieRepository.findByTitle(movieDto.getTitle())
                 .orElseThrow(() -> new IllegalArgumentException("There's no movie by this title!"));
 
         movieRepository.updateMovieEntity(

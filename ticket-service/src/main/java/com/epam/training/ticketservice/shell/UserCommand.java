@@ -39,8 +39,8 @@ public class UserCommand {
 
         UserDto userDto = user.get();
         return userDto.getRole() == UserEntity.Role.ADMIN
-                ? "Signed in with privileged account " + userDto.getUsername()
-                : "Signed in with account " + userDto.getUsername();
+                ? "Signed in with privileged account '" + userDto.getUsername() + "'"
+                : "Signed in with account '" + userDto.getUsername() + "'";
     }
 
 }

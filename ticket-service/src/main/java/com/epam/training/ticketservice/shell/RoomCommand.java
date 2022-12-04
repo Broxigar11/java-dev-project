@@ -34,7 +34,7 @@ public class RoomCommand {
     @ShellMethodAvailability("isAdmin")
     public String updateRoom(String name, Integer rows, Integer columns) {
         RoomDto roomDto = new RoomDto(name, rows, columns);
-        roomService.updateRoom(name, roomDto);
+        roomService.updateRoom(roomDto);
         return "Room " + name + " updated";
     }
 
@@ -54,10 +54,10 @@ public class RoomCommand {
         String response = "";
         for (int i = 0; i < roomList.size(); i++) {
             RoomDto room = roomList.get(i);
-            response += room.getName()
+            response += "Room " + room.getName()
                     + " with " + room.getRows() * roomList.get(i).getColumns()
                     + " seats, " + room.getRows()
-                    + " rows, and " + room.getColumns()
+                    + " rows and " + room.getColumns()
                     + " columns";
             if (i < roomList.size() - 1) {
                 response += "\n";

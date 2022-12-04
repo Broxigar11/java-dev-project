@@ -1,6 +1,7 @@
 package com.epam.training.ticketservice.service;
 
 import com.epam.training.ticketservice.entity.UserEntity;
+import com.epam.training.ticketservice.model.UserDto;
 import com.epam.training.ticketservice.repository.UserRepository;
 import com.epam.training.ticketservice.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -87,6 +88,33 @@ public class UserServiceImplTest {
         Assertions.assertFalse(actual);
     }
 
+    @Test
+    void testDescribeShouldReturnOptionalDtoWhenAUserIsSignedIn() {
+        //Given
+        Optional<UserDto> expected = Optional.of( new UserDto(TEST_ADMIN.getUsername(),  TEST_ADMIN.getRole()));
+        Mockito.when(userRepository.findByUsernameAndPasswordAndRole(
+                TEST_ADMIN.getUsername(), TEST_ADMIN.getPassword(), TEST_ADMIN.getRole()
+        )).thenReturn(Optional.of(TEST_ADMIN));
+        testUserService.signInPrivileged(TEST_ADMIN.getUsername(), TEST_ADMIN.getPassword());
+
+        //When
+        Optional<UserDto> actual = testUserService.describe();
+
+        //Then
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void testDescribeShouldReturnOptionalEmptyWhenAUserIsNotSignedIn() {
+        //Given
+        Optional<UserDto> expected = Optional.empty();
+
+        //When
+        Optional<UserDto> actual = testUserService.describe();
+
+        //Then
+        Assertions.assertEquals(expected, actual);
+    }
 
 
 

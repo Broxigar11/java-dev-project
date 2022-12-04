@@ -9,7 +9,7 @@ public interface RoomService {
 
     void createRoom(RoomDto roomDto);
 
-    void updateRoom(String name, RoomDto roomDto);
+    void updateRoom(RoomDto roomDto);
 
     void deleteRoom(String name);
 

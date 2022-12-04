@@ -90,7 +90,7 @@ public class ScreeningServiceImpl implements ScreeningService {
         room = roomRepository.findByName(screeningDto.getRoomName())
                 .orElseThrow(() -> new IllegalArgumentException("There's no room by that name!"));
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         try {
             screeningTime = formatter.parse(screeningDto.getScreeningTime());
         } catch (ParseException e) {
@@ -102,7 +102,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     private String screeningEntityListToString(List<ScreeningEntity> screeningEntityList) {
         if (screeningEntityList.isEmpty()) {
-            return "There are no screenings at the moment";
+            return "There are no screenings";
         }
 
         String response = "";
@@ -118,7 +118,7 @@ public class ScreeningServiceImpl implements ScreeningService {
     }
 
     private String screeningEntityToString(ScreeningEntity screening) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         MovieEntity movie = screening.getMovie();
         return  movie.getTitle()
                 + " (" + movie.getGenre()

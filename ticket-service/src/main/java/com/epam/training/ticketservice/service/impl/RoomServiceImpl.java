@@ -27,8 +27,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void updateRoom(String name, RoomDto roomDto) {
-        RoomEntity room = roomRepository.findByName(name)
+    public void updateRoom(RoomDto roomDto) {
+        RoomEntity room = roomRepository.findByName(roomDto.getName())
                 .orElseThrow(() -> new IllegalArgumentException("There's no room by this name!"));
 
         roomRepository.updateRoomEntity(
